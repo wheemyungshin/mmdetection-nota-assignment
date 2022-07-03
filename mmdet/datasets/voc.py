@@ -24,13 +24,7 @@ class VOCDataset(XMLDataset):
 
     def __init__(self, **kwargs):
         super(VOCDataset, self).__init__(**kwargs)
-        if 'VOC2007' in self.img_prefix:
-            self.year = 2007
-        elif 'VOC2012' in self.img_prefix:
-            self.year = 2012
-        else:
-            raise ValueError('Cannot infer dataset year from img_prefix')
-
+        
     def evaluate(self,
                  results,
                  metric='mAP',
@@ -69,10 +63,7 @@ class VOCDataset(XMLDataset):
         iou_thrs = [iou_thr] if isinstance(iou_thr, float) else iou_thr
         if metric == 'mAP':
             assert isinstance(iou_thrs, list)
-            if self.year == 2007:
-                ds_name = 'voc07'
-            else:
-                ds_name = self.CLASSES
+            ds_name = self.CLASSES
             mean_aps = []
             for iou_thr in iou_thrs:
                 print_log(f'\n{"-" * 15}iou_thr: {iou_thr}{"-" * 15}')
