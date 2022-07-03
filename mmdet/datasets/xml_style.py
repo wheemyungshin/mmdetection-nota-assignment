@@ -24,7 +24,7 @@ class XMLDataset(CustomDataset):
 
     def __init__(self,
                  min_size=None,
-                 img_subdir='JPEGImages',
+                 img_subdir='img',
                  ann_subdir='annotations',
                  **kwargs):
         assert self.CLASSES or kwargs.get(
@@ -48,9 +48,9 @@ class XMLDataset(CustomDataset):
         data_infos = []
         img_ids = mmcv.list_from_file(ann_file)
         for img_id in img_ids:
-            filename = osp.join(self.img_subdir, f'{img_id}.jpg')
+            filename = osp.join(self.img_subdir, img_id)
             xml_path = osp.join(self.img_prefix, self.ann_subdir,
-                                f'{img_id}.xml')
+                                f'{img_id[:-4]}.xml')
             tree = ET.parse(xml_path)
             root = tree.getroot()
             size = root.find('size')
@@ -75,7 +75,7 @@ class XMLDataset(CustomDataset):
             if self.filter_empty_gt:
                 img_id = img_info['id']
                 xml_path = osp.join(self.img_prefix, self.ann_subdir,
-                                    f'{img_id}.xml')
+                                    f'{img_id[:-4]}.xml')
                 tree = ET.parse(xml_path)
                 root = tree.getroot()
                 for obj in root.findall('object'):
@@ -98,7 +98,7 @@ class XMLDataset(CustomDataset):
         """
 
         img_id = self.data_infos[idx]['id']
-        xml_path = osp.join(self.img_prefix, self.ann_subdir, f'{img_id}.xml')
+        xml_path = osp.join(self.img_prefix, self.ann_subdir, f'{img_id[:-4]}.xml')
         tree = ET.parse(xml_path)
         root = tree.getroot()
         bboxes = []
@@ -165,7 +165,7 @@ class XMLDataset(CustomDataset):
 
         cat_ids = []
         img_id = self.data_infos[idx]['id']
-        xml_path = osp.join(self.img_prefix, self.ann_subdir, f'{img_id}.xml')
+        xml_path = osp.join(self.img_prefix, self.ann_subdir, f'{img_id[:-4]}.xml')
         tree = ET.parse(xml_path)
         root = tree.getroot()
         for obj in root.findall('object'):

@@ -12,7 +12,7 @@ from .openimages import OpenImagesChallengeDataset, OpenImagesDataset
 from .samplers import DistributedGroupSampler, DistributedSampler, GroupSampler
 from .utils import (NumClassCheckHook, get_loading_pipeline,
                     replace_ImageToTensor)
-from .voc import VOCDataset
+from .voc import VOCDataset, NOTADataset
 from .wider_face import WIDERFaceDataset
 from .xml_style import XMLDataset
 
@@ -24,5 +24,5 @@ __all__ = [
     'ClassBalancedDataset', 'WIDERFaceDataset', 'DATASETS', 'PIPELINES',
     'build_dataset', 'replace_ImageToTensor', 'get_loading_pipeline',
     'NumClassCheckHook', 'CocoPanopticDataset', 'MultiImageMixDataset',
-    'OpenImagesDataset', 'OpenImagesChallengeDataset'
+    'OpenImagesDataset', 'OpenImagesChallengeDataset', 'NOTADataset'
 ]
