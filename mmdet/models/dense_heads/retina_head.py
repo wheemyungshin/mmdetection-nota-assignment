@@ -4,7 +4,7 @@ from mmcv.cnn import ConvModule
 
 from ..builder import HEADS
 from .anchor_head import AnchorHead
-
+from mmdet.core import multiclass_nms
 
 @HEADS.register_module()
 class RetinaHead(AnchorHead):
@@ -112,4 +112,17 @@ class RetinaHead(AnchorHead):
             reg_feat = reg_conv(reg_feat)
         cls_score = self.retina_cls(cls_feat)
         bbox_pred = self.retina_reg(reg_feat)
+        nms_cfg = dict(
+            nms_pre=1000,
+            min_bbox_size=0,
+            score_thr=0.05,
+            nms=dict(type='nms', iou_threshold=0.5),
+            max_per_img=100)
+        multiclass_nms(bbox_pred,
+                   cls_score,
+                   score_thr=0.3,
+                   nms_cfg=nms_cfg,
+                   max_num=-1,
+                   score_factors=None,
+                   return_inds=False)
         return cls_score, bbox_pred

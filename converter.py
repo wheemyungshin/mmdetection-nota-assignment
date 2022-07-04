@@ -21,15 +21,12 @@ ftest = open(os.path.join(saveBasePath,'test.txt'), 'w')
 ftrain = open(os.path.join(saveBasePath,'train.txt'), 'w')  
 fval = open(os.path.join(saveBasePath,'val.txt'), 'w')  
  
-for i  in list:  
+for i in list:  
     name=total_xml[i]+'\n'  
     if i in trainval:  
         ftrainval.write(name)  
-        if i in train:  
-            ftrain.write(name)  
-        else:  
-            fval.write(name)  
-    else:  
+        ftrain.write(name)  
+        fval.write(name)  
         ftest.write(name)  
   
 ftrainval.close()  

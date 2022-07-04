@@ -111,8 +111,7 @@ class VOCDataset(XMLDataset):
                     eval_results[f'AR@{num}'] = ar[i]
         return eval_results
 
-
-
+@DATASETS.register_module()
 class NOTADataset(XMLDataset):
 
     CLASSES = ('neutral', 'anger', 'surprise', 'smile', 'sad')
@@ -120,7 +119,7 @@ class NOTADataset(XMLDataset):
     PALETTE = [(106, 0, 228), (119, 11, 32), (165, 42, 42), (0, 0, 192), (197, 226, 255)]
 
     def __init__(self, **kwargs):
-        super(VOCDataset, self).__init__(**kwargs)
+        super(NOTADataset, self).__init__(**kwargs)
 
     def evaluate(self,
                  results,
