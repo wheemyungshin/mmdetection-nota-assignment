@@ -1,6 +1,6 @@
 _base_ = ['../_base_/schedules/schedule_1x.py', '../_base_/datasets/nota.py', '../_base_/default_runtime.py']
 
-img_scale = (320, 320)  # height, width
+img_scale = (224, 224)  # height, width
 
 # model settings
 model = dict(
@@ -53,7 +53,7 @@ train_pipeline = [
 # default 8 gpu
 optimizer = dict(
     type='SGD',
-    lr=0.05,
+    lr=0.1,
     momentum=0.9,
     weight_decay=5e-4,
     nesterov=True,
@@ -63,7 +63,7 @@ optimizer_config = dict(grad_clip=None)
 max_epochs = 300
 num_last_epochs = 15
 resume_from = None
-interval = 10
+interval = 6
 
 # learning policy
 lr_config = dict(
@@ -104,10 +104,10 @@ evaluation = dict(
     # or equal to ‘max_epochs - num_last_epochs’.
     interval=interval,
     dynamic_intervals=[(max_epochs - num_last_epochs, 1)],
-    metric='bbox')
+    metric='mAP')
 log_config = dict(interval=50)
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (8 GPUs) x (8 samples per GPU)
-auto_scale_lr = dict(base_batch_size=64)
+auto_scale_lr = dict(base_batch_size=16)
