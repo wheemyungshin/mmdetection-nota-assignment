@@ -113,10 +113,6 @@ class SingleStageDetector(BaseDetector):
         for det_bboxes_, det_labels_ in results_list:
             det_bboxes = det_bboxes_[:,:4]
             det_labels = torch.nn.functional.one_hot(det_labels_, num_classes=6)*torch.unsqueeze(det_bboxes_[:,-1],-1)
-            print(det_bboxes_)
-            print(det_bboxes)
-            print(det_labels)
-
             bboxes, labels = multiclass_nms(det_bboxes,
                     det_labels,
                     score_thr=0.3,
@@ -124,9 +120,6 @@ class SingleStageDetector(BaseDetector):
                     max_num=100,
                     score_factors=None,
                     return_inds=False)
-            
-            print(bboxes)
-            print(labels)
 
             bbox_results.append(bbox2result(bboxes, labels, self.bbox_head.num_classes))
         return bbox_results
