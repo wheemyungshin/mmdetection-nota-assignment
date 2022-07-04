@@ -33,7 +33,6 @@ def parse_args():
 def mock_detector(model, image_name, output_dir):
     image = cv2.imread(image_name)
     results = inference_detector(model, image)
-    print(results)
     basename = os.path.basename(image_name).split('.')[0]
     result_name = basename + "_result.jpg"
     result_name = os.path.join(output_dir, result_name)

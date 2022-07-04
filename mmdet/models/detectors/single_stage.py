@@ -6,6 +6,7 @@ import torch
 from mmdet.core import bbox2result
 from ..builder import DETECTORS, build_backbone, build_head, build_neck
 from .base import BaseDetector
+from mmdet.core import multiclass_nms
 
 
 @DETECTORS.register_module()
@@ -101,10 +102,33 @@ class SingleStageDetector(BaseDetector):
         feat = self.extract_feat(img)
         results_list = self.bbox_head.simple_test(
             feat, img_metas, rescale=rescale)
-        bbox_results = [
-            bbox2result(det_bboxes, det_labels, self.bbox_head.num_classes)
-            for det_bboxes, det_labels in results_list
-        ]
+
+        bbox_results = []
+        nms_cfg = dict(
+            type='nms',
+            iou_threshold=0.5,
+            score_threshold=0.05,
+            max_num=100)
+
+        for det_bboxes_, det_labels_ in results_list:
+            det_bboxes = det_bboxes_[:,:4]
+            det_labels = torch.nn.functional.one_hot(det_labels_, num_classes=6)*torch.unsqueeze(det_bboxes_[:,-1],-1)
+            print(det_bboxes_)
+            print(det_bboxes)
+            print(det_labels)
+
+            bboxes, labels = multiclass_nms(det_bboxes,
+                    det_labels,
+                    score_thr=0.3,
+                    nms_cfg=nms_cfg,
+                    max_num=100,
+                    score_factors=None,
+                    return_inds=False)
+            
+            print(bboxes)
+            print(labels)
+
+            bbox_results.append(bbox2result(bboxes, labels, self.bbox_head.num_classes))
         return bbox_results
 
     def aug_test(self, imgs, img_metas, rescale=False):
