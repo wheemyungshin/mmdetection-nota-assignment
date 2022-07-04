@@ -90,12 +90,13 @@ It shows good results.
   <img src="resources/results_smaller/118_result.jpg" width="200"/>
   <img src="resources/results_smaller/142_result.jpg" width="200"/>
   <img src="resources/results_smaller/studio-portrait-twenties-asian-woman-260nw-589658678_result.jpg" width="200"/>
+  <img src="resources/results_smaller/screaming-angry-woman-on-mobile-260nw-45681274_result.jpg" width="400"/>
   <div>&nbsp;</div>
 </div>
 
 However, there is also several error cases.
 <div align="center">
-  <img src="resources/results_smaller/73_result.jpg" width="550"/>
+  <img src="resources/results_smaller/73_result.jpg" width="430"/>
   <img src="resources/results_smaller/170_result.jpg" width="250"/>
   <img src="resources/results_smaller/322_result.jpg" width="200"/>
   <div>&nbsp;</div>
@@ -103,10 +104,18 @@ However, there is also several error cases.
 
 
 # Results History
+*First results had overlapping boxes with different classes
 <div align="center">
   <img src="resources/error_case/7_result.jpg" width="200"/>
   <img src="resources/error_case/33_result.jpg" width="200"/>
   <img src="resources/error_case/142_result.jpg" width="200"/>
+</div>
+
+*The above problem is solved using class-agnostic NMS
+<div align="center">
+  <img src="resources/after_nms/7_result.jpg" width="200"/>
+  <img src="resources/after_nms/33_result.jpg" width="200"/>
+  <img src="resources/after_nms/142_result.jpg" width="200"/>
 </div>
 
 # Explanation 
