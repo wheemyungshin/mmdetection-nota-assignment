@@ -229,8 +229,8 @@ def main():
     # add an attribute for visualization convenience
     model.CLASSES = datasets[0].CLASSES
 
-    pytorch_total_params = sum(p.numel() for p in model.parameters())
-    print(f"Number of parameters: {pytorch_total_params}")
+    pytorch_total_params = sum(p.numel() for p in model.parameters()) / 1024**2
+    print("Number of parameters: {:.3f}MB".format(pytorch_total_params))
     
     train_detector(
         model,
