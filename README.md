@@ -77,13 +77,37 @@ Visualizae the results on test set:
 python mmdetection-nota-assignment/demo/demo.py mmdetection-nota-assignment/configs/pascal_voc/retinanet_r50_fpn_1x_nota.py /content/work_dirs/retinanet_r50_fpn_1x_nota/epoch_12.pth /content/data/facial_emotion_data/test/img /content/work_dirs/retinanet_r50_fpn_1x_nota-test
 ```
 
-You can zip the results for download
+You can zip the results for download:
 ```
 zip retinanet_r50_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_r50_fpn_1x_nota-test
 ```
 
 # Qualitative results
+It shows good results.
+<div align="center">
+  <img src="resources/results_smaller/7_result.jpg" width="200"/>
+  <img src="resources/results_smaller/33_result.jpg" width="200"/>
+  <img src="resources/results_smaller/118_result.jpg" width="200"/>
+  <img src="resources/results_smaller/142_result.jpg" width="200"/>
+  <img src="resources/results_smaller/studio-portrait-twenties-asian-woman-260nw-589658678_result.jpg" width="200"/>
+  <div>&nbsp;</div>
+</div>
 
+However, there is also several error cases.
+<div align="center">
+  <img src="resources/results_smaller/73_result.jpg" width="550"/>
+  <img src="resources/results_smaller/170_result.jpg" width="250"/>
+  <img src="resources/results_smaller/322_result.jpg" width="200"/>
+  <div>&nbsp;</div>
+</div>
+
+
+# Results History
+<div align="center">
+  <img src="resources/error_case/7_result.jpg" width="200"/>
+  <img src="resources/error_case/33_result.jpg" width="200"/>
+  <img src="resources/error_case/142_result.jpg" width="200"/>
+</div>
 
 # Explanation 
 You can find my modifications on the source code [here](https://github.com/open-mmlab/mmdetection/compare/master...wheemyungshin:mmdetection-nota-assignment:master)
