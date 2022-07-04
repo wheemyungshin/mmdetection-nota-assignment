@@ -141,11 +141,11 @@ zip retinanet_eff_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_eff_fpn_1
 You can find my modifications on the source code [here](https://github.com/open-mmlab/mmdetection/compare/master...wheemyungshin:mmdetection-nota-assignment:master)
 
 My contributions can be summarized as follows:
-* Custom dataloader & data converter (converter.py , mmdet/datasets/voc.py/NOTADataset)
-* RGB normalization for the custom data (configs/_base_/datasets/nota.py)
-* NMS accross all classes (mmdet/models/detectors/single_stage.py, mmdet/core/post_processing/bbox_nms.py)
-* More model selections (RetinaNet with EfficientNetB0&B3, YOLOX)
-* Hyperparameter tuning (configs/pascal_voc/retinanet_r50_fpn_1x_nota.py , configs/pascal_voc/retinanet_eff_fpn_1x_nota.py , configs/yolox/yolox_s_8x8_300e_nota.py)
+* **Custom dataloader & data converter** (converter.py , mmdet/datasets/voc.py/NOTADataset)
+* **RGB normalization for the custom data** (configs/_base_/datasets/nota.py)
+* **NMS accross all classes** (mmdet/models/detectors/single_stage.py, mmdet/core/post_processing/bbox_nms.py)
+* **More model selections** (RetinaNet with EfficientNetB0&B3, YOLOX)
+* **Hyperparameter tuning** (configs/pascal_voc/retinanet_r50_fpn_1x_nota.py , configs/pascal_voc/retinanet_eff_fpn_1x_nota.py , configs/yolox/yolox_s_8x8_300e_nota.py)
 
 ## Acknowledgement
 
