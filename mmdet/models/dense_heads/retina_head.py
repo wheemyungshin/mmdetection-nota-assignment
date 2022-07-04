@@ -112,17 +112,40 @@ class RetinaHead(AnchorHead):
             reg_feat = reg_conv(reg_feat)
         cls_score = self.retina_cls(cls_feat)
         bbox_pred = self.retina_reg(reg_feat)
+        return cls_score, bbox_pred
+
+    def inference(self, x):
+        """Forward feature of a single scale level.
+
+        Args:
+            x (Tensor): Features of a single scale level.
+
+        Returns:
+            tuple:
+                cls_score (Tensor): Cls scores for a single scale level
+                    the channels number is num_anchors * num_classes.
+                bbox_pred (Tensor): Box energies / deltas for a single scale
+                    level, the channels number is num_anchors * 4.
+        """
+        cls_feat = x
+        reg_feat = x
+        for cls_conv in self.cls_convs:
+            cls_feat = cls_conv(cls_feat)
+        for reg_conv in self.reg_convs:
+            reg_feat = reg_conv(reg_feat)
+        cls_score = self.retina_cls(cls_feat)
+        bbox_pred = self.retina_reg(reg_feat)
         nms_cfg = dict(
             nms_pre=1000,
             min_bbox_size=0,
             score_thr=0.05,
             nms=dict(type='nms', iou_threshold=0.5),
             max_per_img=100)
-        multiclass_nms(bbox_pred,
+        dets, labels = multiclass_nms(bbox_pred,
                    cls_score,
                    score_thr=0.3,
                    nms_cfg=nms_cfg,
                    max_num=-1,
                    score_factors=None,
                    return_inds=False)
-        return cls_score, bbox_pred
+        return dets, labels
