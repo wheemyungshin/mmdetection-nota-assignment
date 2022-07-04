@@ -1,6 +1,6 @@
 _base_ = ['../_base_/schedules/schedule_1x.py', '../_base_/datasets/nota.py', '../_base_/default_runtime.py']
 
-img_scale = (640, 640)  # height, width
+img_scale = (320, 320)  # height, width
 
 # model settings
 model = dict(
@@ -53,7 +53,7 @@ train_pipeline = [
 # default 8 gpu
 optimizer = dict(
     type='SGD',
-    lr=0.01,
+    lr=0.05,
     momentum=0.9,
     weight_decay=5e-4,
     nesterov=True,

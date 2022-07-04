@@ -1,53 +1,23 @@
-## Introduction
-This repository is a respository for Nota assignment.
+# Introduction
+This repository is a repository for Nota assignment.
 The dataset in this repository is solely used for Nota home assignment. Data should not be used for any other purpose.
 
 This repository contains:
 1. A guide for installation of requirements, training and inference.
-2. Qualitative results
-3. Explanataion (focused on problem definitions and my modification on code)
+2. Qualitative results.
+3. Explanation (focused on problem definitions and my modification on code).
 
 The code highly depends on the opensource, MMdetection : [https://github.com/open-mmlab/mmdetection](https://github.com/open-mmlab/mmdetection)
 MMDetection is an open source object detection toolbox based on PyTorch. It is a part of the [OpenMMLab](https://openmmlab.com/) project.
 
-<details open>
-<summary>Major features</summary>
-
-- **Modular Design**
-
-  We decompose the detection framework into different components and one can easily construct a customized object detection framework by combining different modules.
-
-- **Support of multiple frameworks out of box**
-
-  The toolbox directly supports popular and contemporary detection frameworks, *e.g.* Faster RCNN, Mask RCNN, RetinaNet, etc.
-
-- **High efficiency**
-
-  All basic bbox and mask operations run on GPUs. The training speed is faster than or comparable to other codebases, including [Detectron2](https://github.com/facebookresearch/detectron2), [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) and [SimpleDet](https://github.com/TuSimple/simpledet).
-
-- **State of the art**
-
-  The toolbox stems from the codebase developed by the *MMDet* team, who won [COCO Detection Challenge](http://cocodataset.org/#detection-leaderboard) in 2018, and we keep pushing it forward.
-
-</details>
-
-Apart from MMDetection, we also released a library [mmcv](https://github.com/open-mmlab/mmcv) for computer vision research, which is heavily depended on by this toolbox.
-
-## What's New
-
-**2.25.0** was released in 1/6/2022:
-
-- Support dedicated `MMDetWandbHook` hook
-- Support [ConvNeXt](configs/convnext), [DDOD](configs/ddod), [SOLOv2](configs/solov2)
-- Support [Mask2Former](configs/mask2former) for instance segmentation
-- Rename [config files of Mask2Former](configs/mask2former)
-
-Please refer to [changelog.md](docs/en/changelog.md) for details and release history.
-
-For compatibility changes between different versions of MMDetection, please refer to [compatibility.md](docs/en/compatibility.md).
+# A guide for installation of requirements, training and inference
+## Overview
+You can use [Google Colaboratory](https://colab.research.google.com/?utm_source=scs-index).
+The overall script is here: UPDATE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Simply following all the script will install the requirements, start training and inference on the test dataset.
+Rest of the section is for script explanation and how to set custom configs.
 
 ## Installation
-
 Please refer to [Installation](docs/en/get_started.md/#Installation) for installation instructions.
 
 ## Getting Started
