@@ -13,7 +13,7 @@ MMDetection is an open source object detection toolbox based on PyTorch. It is a
 # A guide for installation of requirements, training and inference
 ## Overview
 You can use [Google Colaboratory](https://colab.research.google.com/?utm_source=scs-index).
-The overall script is here: UPDATE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+The overall script is [here](mmdetection.ipynb)
 
 Simply following all the script will install the requirements, start training and inference on the test dataset.
 Rest of the section is for script explanation and how to set custom configs.
@@ -56,11 +56,13 @@ python mmdetection-nota-assignment/converter.py
 ## Training
 You can use ImageNet pretrained model from [model zoo](https://github.com/open-mmlab/mmdetection/blob/master/docs/en/model_zoo.md) provided by MMdetection.
 
-By default, pretrained YOLOX model can be downloaded by the script below:
+For example, pretrained YOLOX model can be downloaded by the script below (Optional):
 ```
 wget -O work_dirs/yolox_s_8x8_300e_nota/pretrain_yolox_s.pth https://download.openmmlab.com/mmdetection/v2.0/yolox/yolox_s_8x8_300e_coco/yolox_s_8x8_300e_coco_20211121_095711-4592a793.pth
 ```
 
+The default model is RetinaNet with EfficientNet-B3.
+The pretrained weight is automatically downloaded before training.
 You can start training with the code below:
 ```
 #python mmdetection-nota-assignment/tools/train.py \
@@ -68,21 +70,26 @@ You can start training with the code below:
     [additional arguments]
 
 python mmdetection-nota-assignment/tools/train.py \
-    /content/mmdetection-nota-assignment/configs/yolox/yolox_s_8x8_300e_nota.py \
-    --resume-from work_dirs/yolox_s_8x8_300e_nota/pretrain_yolox_s.pth
+    mmdetection-nota-assignment/configs/pascal_voc/retinanet_eff_fpn_1x_nota.py \
+    --no-validate
 ```
 
 Visualizae the results on test set:
 ```
-python mmdetection-nota-assignment/demo/demo.py mmdetection-nota-assignment/configs/pascal_voc/retinanet_r50_fpn_1x_nota.py /content/work_dirs/retinanet_r50_fpn_1x_nota/epoch_12.pth /content/data/facial_emotion_data/test/img /content/work_dirs/retinanet_r50_fpn_1x_nota-test
+python mmdetection-nota-assignment/demo/demo.py \
+    mmdetection-nota-assignment/configs/pascal_voc/retinanet_eff_fpn_1x_nota.py \
+    /content/work_dirs/retinanet_eff_fpn_1x_nota/epoch_12.pth \
+    /content/data/facial_emotion_data/test/img \
+    /content/work_dirs/retinanet_eff_fpn_1x_nota-test
 ```
 
 You can zip the results for download:
 ```
-zip retinanet_r50_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_r50_fpn_1x_nota-test
+zip retinanet_eff_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_eff_fpn_1x_nota-test
 ```
 
 # Qualitative results
+## Final results
 * It shows good results.
 <div align="center">
   <img src="resources/results_smaller/7_result.jpg" width="200"/>
@@ -103,7 +110,7 @@ zip retinanet_r50_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_r50_fpn_1
 </div>
 
 
-# Results History
+## History results
 * First results had overlapping boxes with different classes
 <div align="center">
   <img src="resources/error_case/7_result.jpg" width="200"/>
