@@ -5,7 +5,7 @@ The dataset in this repository is solely used for Nota home assignment. Data sho
 This repository contains:
 1. A guide for installation of requirements, training and inference.
 2. Qualitative results.
-3. Explanation (focused on problem definitions and my modification on code).
+3. Explanation (focused on problem definitions and modification on code).
 
 The code highly depends on the opensource, MMdetection : [https://github.com/open-mmlab/mmdetection](https://github.com/open-mmlab/mmdetection)
 MMDetection is an open source object detection toolbox based on PyTorch. It is a part of the [OpenMMLab](https://openmmlab.com/) project.
@@ -82,24 +82,11 @@ You can zip the results for download
 zip retinanet_r50_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_r50_fpn_1x_nota-test
 ```
 
-## Getting Started
+# Qualitative results
 
-Please see [get_started.md](docs/en/get_started.md) for the basic usage of MMDetection. We provide [colab tutorial](demo/MMDet_Tutorial.ipynb) and [instance segmentation colab tutorial](demo/MMDet_InstanceSeg_Tutorial.ipynb), and other tutorials for:
 
-- [with existing dataset](docs/en/1_exist_data_model.md)
-- [with new dataset](docs/en/2_new_data_model.md)
-- [with existing dataset_new_model](docs/en/3_exist_data_new_model.md)
-- [learn about configs](docs/en/tutorials/config.md)
-- [customize_datasets](docs/en/tutorials/customize_dataset.md)
-- [customize data pipelines](docs/en/tutorials/data_pipeline.md)
-- [customize_models](docs/en/tutorials/customize_models.md)
-- [customize runtime settings](docs/en/tutorials/customize_runtime.md)
-- [customize_losses](docs/en/tutorials/customize_losses.md)
-- [finetuning models](docs/en/tutorials/finetune.md)
-- [export a model to ONNX](docs/en/tutorials/pytorch2onnx.md)
-- [export ONNX to TRT](docs/en/tutorials/onnx2tensorrt.md)
-- [weight initialization](docs/en/tutorials/init_cfg.md)
-- [how to xxx](docs/en/tutorials/how_to.md)
+# Explanation 
+https://github.com/open-mmlab/mmdetection/compare/master...wheemyungshin:mmdetection-nota-assignment:master
 
 ## Acknowledgement
 
