@@ -83,7 +83,7 @@ zip retinanet_r50_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_r50_fpn_1
 ```
 
 # Qualitative results
-It shows good results.
+* It shows good results.
 <div align="center">
   <img src="resources/results_smaller/7_result.jpg" width="200"/>
   <img src="resources/results_smaller/33_result.jpg" width="200"/>
@@ -94,7 +94,7 @@ It shows good results.
   <div>&nbsp;</div>
 </div>
 
-However, there is also several error cases.
+* However, there is also several error cases.
 <div align="center">
   <img src="resources/results_smaller/73_result.jpg" width="430"/>
   <img src="resources/results_smaller/170_result.jpg" width="250"/>
@@ -104,18 +104,30 @@ However, there is also several error cases.
 
 
 # Results History
-*First results had overlapping boxes with different classes
+* First results had overlapping boxes with different classes
 <div align="center">
   <img src="resources/error_case/7_result.jpg" width="200"/>
   <img src="resources/error_case/33_result.jpg" width="200"/>
   <img src="resources/error_case/142_result.jpg" width="200"/>
 </div>
 
-*The above problem is solved using class-agnostic NMS
+* The above problem is solved using class-agnostic NMS
 <div align="center">
   <img src="resources/after_nms/7_result.jpg" width="200"/>
   <img src="resources/after_nms/33_result.jpg" width="200"/>
   <img src="resources/after_nms/142_result.jpg" width="200"/>
+</div>
+
+* Results with smaller model (RetinaNet with EfficientNet-B0) shows some undetected and misclassfied cases.
+<div align="center">
+  <img src="resources/results_smallest/7_result.jpg" width="200"/>
+  <img src="resources/results_smallest/33_result.jpg" width="200"/>
+  <img src="resources/results_smallest/118_result.jpg" width="200"/>
+  <img src="resources/results_smallest/142_result.jpg" width="200"/>
+  <img src="resources/results_smallest/73_result.jpg" width="430"/>
+  <img src="resources/results_smallest/170_result.jpg" width="250"/>
+  <img src="resources/results_smallest/322_result.jpg" width="200"/>
+  <div>&nbsp;</div>
 </div>
 
 # Explanation 
