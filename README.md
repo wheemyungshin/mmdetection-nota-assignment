@@ -34,11 +34,11 @@ To fix [a bug during installation](https://github.com/open-mmlab/mmdetection/iss
 sed -i 's/if collection_name:/if collection_name and collection_name in name2collection\.keys():/g' /usr/local/lib/python3.7/dist-packages/mim/commands/search.py
 ```
 
-##Dataset
+## Dataset
 The provided dataset contains 1,688 training set and 184 test set.
 Annotation format is Pascal VOC and there is no label for test set.
 The number of classes is 5.
-Size is not uniform. There exists size under ~128 or over 1280~.
+Size is not uniform. There exists size under \~128 or over 1280\~.
 
 After uploading the dataset onto the colab notebook, unzip the dataset.
 ```
@@ -53,6 +53,34 @@ Before training, run "converter.py" to get the list of training set (trainval.tx
 python mmdetection-nota-assignment/converter.py
 ```
 
+## Training
+You can use ImageNet pretrained model from [model zoo](https://github.com/open-mmlab/mmdetection/blob/master/docs/en/model_zoo.md) provided by MMdetection.
+
+By default, pretrained YOLOX model can be downloaded by the script below:
+```
+wget -O work_dirs/yolox_s_8x8_300e_nota/pretrain_yolox_s.pth https://download.openmmlab.com/mmdetection/v2.0/yolox/yolox_s_8x8_300e_coco/yolox_s_8x8_300e_coco_20211121_095711-4592a793.pth
+```
+
+You can start training with the code below:
+```
+#python mmdetection-nota-assignment/tools/train.py \
+    [config path] \
+    [additional arguments]
+
+python mmdetection-nota-assignment/tools/train.py \
+    /content/mmdetection-nota-assignment/configs/yolox/yolox_s_8x8_300e_nota.py \
+    --resume-from work_dirs/yolox_s_8x8_300e_nota/pretrain_yolox_s.pth
+```
+
+Visualizae the results on test set:
+```
+python mmdetection-nota-assignment/demo/demo.py mmdetection-nota-assignment/configs/pascal_voc/retinanet_r50_fpn_1x_nota.py /content/work_dirs/retinanet_r50_fpn_1x_nota/epoch_12.pth /content/data/facial_emotion_data/test/img /content/work_dirs/retinanet_r50_fpn_1x_nota-test
+```
+
+You can zip the results for download
+```
+zip retinanet_r50_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_r50_fpn_1x_nota-test
+```
 
 ## Getting Started
 

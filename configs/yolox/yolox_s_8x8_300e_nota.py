@@ -21,34 +21,19 @@ model = dict(
     # 0.01, and the threshold of the test phase is 0.001.
     test_cfg=dict(score_thr=0.01, nms=dict(type='nms', iou_threshold=0.65)))
 
-train_pipeline = [
-    dict(type='Mosaic', img_scale=img_scale, pad_val=114.0),
-    dict(
-        type='RandomAffine',
-        scaling_ratio_range=(0.1, 2),
-        border=(-img_scale[0] // 2, -img_scale[1] // 2)),
-    dict(
-        type='MixUp',
-        img_scale=img_scale,
-        ratio_range=(0.8, 1.6),
-        pad_val=114.0),
-    dict(type='YOLOXHSVRandomAug'),
-    dict(type='RandomFlip', flip_ratio=0.5),
-    # According to the official implementation, multi-scale
-    # training is not considered here but in the
-    # 'mmdet/models/detectors/yolox.py'.
-    dict(type='Resize', img_scale=img_scale, keep_ratio=True),
-    dict(
-        type='Pad',
-        pad_to_square=True,
-        # If the image is three-channel, the pad value needs
-        # to be set separately for each channel.
-        pad_val=dict(img=(114.0, 114.0, 114.0))),
-    dict(type='FilterAnnotations', min_gt_bbox_wh=(1, 1), keep_empty=False),
-    dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels'])
-]
+start_epoch = 300
+optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
+optimizer_config = dict(grad_clip=None)
+lr_config = dict(
+    policy='step',
+    warmup='linear',
+    warmup_iters=2000,
+    warmup_ratio=0.001,
+    step=[start_epoch+8, start_epoch+11])
 
+runner = dict(type='EpochBasedRunner', max_epochs=start_epoch+12)
+
+'''
 # optimizer
 # default 8 gpu
 optimizer = dict(
@@ -111,3 +96,4 @@ log_config = dict(interval=50)
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (8 GPUs) x (8 samples per GPU)
 auto_scale_lr = dict(base_batch_size=16)
+'''
