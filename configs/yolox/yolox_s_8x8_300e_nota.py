@@ -1,4 +1,4 @@
-_base_ = ['../_base_/schedules/schedule_1x.py', '../_base_/datasets/nota.py', '../_base_/default_runtime.py']
+_base_ = ['../_base_/datasets/nota.py', '../_base_/default_runtime.py','../_base_/schedules/schedule_1x.py']
 
 img_scale = (224, 224)  # height, width
 
@@ -19,15 +19,15 @@ model = dict(
     train_cfg=dict(assigner=dict(type='SimOTAAssigner', center_radius=2.5)),
     # In order to align the source code, the threshold of the val phase is
     # 0.01, and the threshold of the test phase is 0.001.
-    test_cfg=dict(score_thr=0.01, nms=dict(type='nms', iou_threshold=0.65)))
+    test_cfg=dict(score_thr=0.01, nms=dict(type='nms', iou_threshold=0.5)))
 
 start_epoch = 300
-optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=None)
 lr_config = dict(
     policy='step',
     warmup='linear',
-    warmup_iters=2000,
+    warmup_iters=1000,
     warmup_ratio=0.001,
     step=[start_epoch+8, start_epoch+11])
 
