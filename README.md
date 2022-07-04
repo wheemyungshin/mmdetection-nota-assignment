@@ -61,7 +61,7 @@ For example, pretrained YOLOX model can be downloaded by the script below (Optio
 wget -O work_dirs/yolox_s_8x8_300e_nota/pretrain_yolox_s.pth https://download.openmmlab.com/mmdetection/v2.0/yolox/yolox_s_8x8_300e_coco/yolox_s_8x8_300e_coco_20211121_095711-4592a793.pth
 ```
 
-The default model is RetinaNet with EfficientNet-B3.
+The default model is RetinaNet with EfficientNet-B3(17.568MB).
 The pretrained weight is automatically downloaded before training.
 You can start training with the code below:
 ```

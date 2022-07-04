@@ -5,9 +5,9 @@ _base_ = [
 # model settings
 norm_cfg = dict(type='BN', requires_grad=True)
 #B3
-#checkpoint = 'https://download.openmmlab.com/mmclassification/v0/efficientnet/efficientnet-b3_3rdparty_8xb32-aa_in1k_20220119-5b4887a0.pth'
+checkpoint = 'https://download.openmmlab.com/mmclassification/v0/efficientnet/efficientnet-b3_3rdparty_8xb32-aa_in1k_20220119-5b4887a0.pth'
 #B0
-checkpoint = 'https://download.openmmlab.com/mmclassification/v0/efficientnet/efficientnet-b0_3rdparty_8xb32-aa_in1k_20220119-8d939117.pth'
+#checkpoint = 'https://download.openmmlab.com/mmclassification/v0/efficientnet/efficientnet-b0_3rdparty_8xb32-aa_in1k_20220119-8d939117.pth'
 
 model = dict(
     type='RetinaNet',
@@ -24,8 +24,8 @@ model = dict(
         init_cfg=dict(
             type='Pretrained', prefix='backbone', checkpoint=checkpoint)),
     neck=dict(
-        #in_channels=[48, 136, 384],#forB3
-        in_channels=[40, 112, 320],#forB0
+        in_channels=[48, 136, 384],#forB3
+        #in_channels=[40, 112, 320],#forB0
         start_level=0,
         out_channels=256,
         relu_before_extra_convs=True,
