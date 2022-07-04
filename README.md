@@ -86,7 +86,14 @@ zip retinanet_r50_fpn_1x_nota-test.zip -r /content/work_dirs/retinanet_r50_fpn_1
 
 
 # Explanation 
-https://github.com/open-mmlab/mmdetection/compare/master...wheemyungshin:mmdetection-nota-assignment:master
+You can find my modifications on the source code [here](https://github.com/open-mmlab/mmdetection/compare/master...wheemyungshin:mmdetection-nota-assignment:master)
+
+My contributions can be summarized as follows:
+* Custom dataloader & data converter
+* RGB normalization for the custom data
+* NMS accross all classes
+* More model selections (RetinaNet with EfficientNetB0&B3, YOLOX)
+* Hyperparameter tuning
 
 ## Acknowledgement
 
